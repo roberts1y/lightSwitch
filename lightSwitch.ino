@@ -18,6 +18,9 @@ int downPosition = 0; // Adjust to servo's down position
 unsigned long lastDebounceTime = 0; // the last time the output pin was toggled
 unsigned long debounceDelay = 50; // time for user to release button
 
+unsigned long pirActivatedTimestamp = 0; // Timestamp of when the PIR sensor last activated the servo
+const long pirActivationDuration = 1000; // Duration to keep the servo in the up position after PIR activation
+
 void setup() {
   pinMode(pirPin, INPUT);
   pinMode(buttonPin, INPUT);
@@ -51,12 +54,18 @@ void loop() {
   lastButtonState = reading;
 
   // PIR sensor
+    // PIR sensor logic with non-blocking delay
   pirState = digitalRead(pirPin);
+  unsigned long currentMillis = millis();
+  
   if (pirState == HIGH) {
     myservo.write(upPosition); // Move servo to up position
-    delay(5000); 
-    if (!toggleState) { // If not manually overridden
-      myservo.write(downPosition); // Move servo back to down position
-    }
+    pirActivatedTimestamp = currentMillis; // Update the timestamp
   }
+  else if (currentMillis - pirActivatedTimestamp > pirActivationDuration && !toggleState) {
+    // More than 1 second has passed since the PIR sensor activated the servo,
+    // and there is no manual override, move the servo back to down position
+    myservo.write(downPosition);
+  }
+
 }
