@@ -12,7 +12,7 @@ int lastButtonState = LOW; // Previous state of the button
 bool toggleState = false; // Toggle state for servo position
 
 // Servo positions
-int upPosition = 180; // Adjust to  servo's up position
+int upPosition = 180; // Adjust to servo's up position
 int downPosition = 0; // Adjust to servo's down position
 
 unsigned long lastDebounceTime = 0; // the last time the output pin was toggled
@@ -20,6 +20,10 @@ unsigned long debounceDelay = 50; // time for user to release button
 
 unsigned long pirActivatedTimestamp = 0; // Timestamp of when the PIR sensor last activated the servo
 const long pirActivationDuration = 1000; // Duration to keep the servo in the up position after PIR activation
+
+// New variables for PIR debounce
+unsigned long lastPirEvent = 0; // Last time a PIR event was recorded
+unsigned long pirDebounceDelay = 1000; // Delay to debounce PIR sensor (adjust as needed)
 
 void setup() {
   pinMode(pirPin, INPUT);
@@ -36,12 +40,11 @@ void loop() {
   }
   
   if ((millis() - lastDebounceTime) > debounceDelay) {
-    // if the button state has changed:
     if (reading != buttonState) {
       buttonState = reading;
 
       if (buttonState == HIGH) {
-        toggleState = !toggleState; // Toggle the state
+        toggleState = !toggleState;
         if (toggleState) {
           myservo.write(upPosition);
         } else {
@@ -53,19 +56,16 @@ void loop() {
 
   lastButtonState = reading;
 
-  // PIR sensor
-    // PIR sensor logic with non-blocking delay
+  // Updated PIR sensor logic with debounce
   pirState = digitalRead(pirPin);
   unsigned long currentMillis = millis();
   
-  if (pirState == HIGH) {
-    myservo.write(upPosition); // Move servo to up position
-    pirActivatedTimestamp = currentMillis; // Update the timestamp
+  if (pirState == HIGH && currentMillis - lastPirEvent > pirDebounceDelay) {
+    myservo.write(upPosition);
+    pirActivatedTimestamp = currentMillis;
+    lastPirEvent = currentMillis; // Update last PIR event timestamp
   }
   else if (currentMillis - pirActivatedTimestamp > pirActivationDuration && !toggleState) {
-    // More than 1 second has passed since the PIR sensor activated the servo,
-    // and there is no manual override, move the servo back to down position
     myservo.write(downPosition);
   }
-
 }
