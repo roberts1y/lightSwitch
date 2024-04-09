@@ -1,8 +1,8 @@
 #include <Servo.h>
 
-const int pirPin = 7; // PIR on D7
+const int pirPin = 4; // PIR on D7
 const int buttonPin = 6; // Button on D6
-const int servoPin = 12; // Servo Motor on D12
+const int servoPin = 3; // Servo Motor on D12
 const int LEDPin = 5; // LED on D5
 
 Servo myservo;
@@ -14,18 +14,18 @@ bool toggleState = false; // Toggle state for servo position
 bool isPirActive = false; // Indicates if the PIR sensor has recently activated the servo
 
 // Servo positions
-int upPosition = 180; // Adjust to servo's up position
-int downPosition = 0; // Adjust to servo's down position
+int upPosition = 142; // Adjust to servo's up position
+int downPosition = 50; // Adjust to servo's down position
 
 unsigned long lastDebounceTime = 0; // the last time the output pin was toggled
 unsigned long debounceDelay = 50; // time for user to release button
 
 unsigned long pirActivatedTimestamp = 0; // Timestamp of when the PIR sensor last activated the servo
-const long pirActivationDuration = 1000; // Duration to keep the servo in the up position after PIR activation
+const long pirActivationDuration = 5000; // Duration to keep the servo in the up position after PIR activation
 
 // New variables for PIR debounce
 unsigned long lastPirEvent = 0; // Last time a PIR event was recorded
-unsigned long pirDebounceDelay = 1000; // Delay to debounce PIR sensor (adjust as needed)
+unsigned long pirDebounceDelay = 10000; // Delay to debounce PIR sensor (adjust as needed)
 
 void setup() {
   pinMode(pirPin, INPUT);
