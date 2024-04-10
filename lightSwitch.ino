@@ -1,9 +1,9 @@
 #include <Servo.h>
 
-const int pirPin = 4; // PIR on D7
-const int buttonPin = 6; // Button on D6
-const int servoPin = 3; // Servo Motor on D12
-const int LEDPin = 5; // LED on D5
+const int pirPin = 7; // PIR on D7
+const int buttonPin = 4; // Button on D6
+const int servoPin = 5; // Servo Motor on D12
+const int LEDPin = 2; // LED on D5
 
 Servo myservo;
 
@@ -25,9 +25,13 @@ const long pirActivationDuration = 5000; // Duration to keep the servo in the up
 
 // New variables for PIR debounce
 unsigned long lastPirEvent = 0; // Last time a PIR event was recorded
-unsigned long pirDebounceDelay = 10000; // Delay to debounce PIR sensor (adjust as needed)
+unsigned long pirDebounceDelay = 10000; // Delay to debounce PIR sensor
+
+unsigned long currentMillis;
 
 void setup() {
+  Serial.begin(9600);
+
   pinMode(pirPin, INPUT);
   pinMode(buttonPin, INPUT);
   pinMode(LEDPin, OUTPUT);
@@ -74,7 +78,16 @@ void loop() {
 
   // Handle PIR sensor activation with debounce
   pirState = digitalRead(pirPin);
-  unsigned long currentMillis = millis();
+  currentMillis = millis();
+
+  Serial.print("PIR");
+  Serial.println(pirState);
+
+  Serial.print("Current");
+  Serial.println(currentMillis);
+
+  Serial.print("pirActivated");
+  Serial.println(pirActivatedTimestamp);
 
   if (pirState == HIGH && currentMillis - lastPirEvent > pirDebounceDelay) {
     if (!toggleState) {
