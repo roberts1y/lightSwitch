@@ -1,9 +1,9 @@
 #include <Servo.h>
 
 const int pirPin = 7; // PIR on D7
-const int buttonPin = 4; // Button on D6
-const int servoPin = 5; // Servo Motor on D12
-const int LEDPin = 2; // LED on D5
+const int buttonPin = 4; // Button on D4
+const int servoPin = 5; // Servo Motor on D5
+const int LEDPin = 2; // LED on D2
 
 Servo myservo;
 
@@ -14,8 +14,8 @@ bool toggleState = false; // Toggle state for servo position
 bool isPirActive = false; // Indicates if the PIR sensor has recently activated the servo
 
 // Servo positions
-int upPosition = 142; // Adjust to servo's up position
-int downPosition = 50; // Adjust to servo's down position
+int upPosition = 95; // Adjust to servo's up position
+int downPosition = 10; // Adjust to servo's down position
 
 unsigned long lastDebounceTime = 0; // the last time the output pin was toggled
 unsigned long debounceDelay = 50; // time for user to release button
@@ -80,8 +80,8 @@ void loop() {
   pirState = digitalRead(pirPin);
   currentMillis = millis();
 
-  Serial.print("PIR");
-  Serial.println(pirState);
+  // Serial.print("PIR");
+  // Serial.println(pirState);
 
   Serial.print("Current");
   Serial.println(currentMillis);
