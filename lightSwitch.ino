@@ -14,8 +14,8 @@ bool toggleState = false; // Toggle state for servo position
 bool isPirActive = false; // Indicates if the PIR sensor has recently activated the servo
 
 // Servo positions
-int upPosition = 95; // Adjust to servo's up position
-int downPosition = 10; // Adjust to servo's down position
+int upPosition = 79; // Adjust to servo's up position
+int downPosition = 0; // Adjust to servo's down position
 
 unsigned long lastDebounceTime = 0; // the last time the output pin was toggled
 unsigned long debounceDelay = 50; // time for user to release button
