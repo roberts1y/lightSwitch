@@ -11,6 +11,11 @@ The **LightSwitch Overlay** system allows users to toggle a light switch automat
 
 According to a 2020 Lutron Electronics survey, 90% of American homeowners reported someone in their household frequently leaving lights on. This solution aims to combat that issue in a cost-effective and energy-efficient manner.
 
+<p align="center">
+  <img src="https://github.com/roberts1y/lightSwitch/blob/main/pictures/front.jpg" alt="Front View" width="300"/>
+  <img src="https://github.com/roberts1y/lightSwitch/blob/main/pictures/side.jpg" alt="Side View" width="300"/>
+</p>
+
 ### Key Features
 
 - **Motion-Activated Switching**: Automatically flips the switch when motion is detected.
