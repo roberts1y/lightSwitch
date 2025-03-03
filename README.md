@@ -40,7 +40,7 @@ According to a 2020 Lutron Electronics survey, 90% of American homeowners report
 
 <p align="center">
   <img src="https://github.com/roberts1y/lightSwitch/blob/main/pictures/restly.jpg" alt="Mr. Brendan Restly & Robert Snell" width="300"/>
-  <img src="https://github.com/roberts1y/lightSwitch/blob/main/pictures/trophy.jpg" alt="Award With Trophy" width="300"/>
+  <img src="https://github.com/roberts1y/lightSwitch/blob/main/pictures/trophy.jpg" alt="Award With Trophy"/>
 </p>
   
 ## How It Works
@@ -59,7 +59,7 @@ According to a 2020 Lutron Electronics survey, 90% of American homeowners report
 - [**Project Slides**](your-slides-link)
 
 <p align="center">
-  <img src="https://github.com/roberts1y/lightSwitch/blob/main/pictures/stage.jpg" alt="Audience View of Presentation" width="300"/>
+  <img src="https://github.com/roberts1y/lightSwitch/blob/main/pictures/stage.jpg" alt="Audience View of Presentation"/>
 </p>
 
 ## License
