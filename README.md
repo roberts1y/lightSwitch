@@ -39,8 +39,8 @@ According to a 2020 Lutron Electronics survey, 90% of American homeowners report
 - **Patent Pending**: The team is pursuing a patent and developing a custom PCB to optimize the design.
 
 <p align="center">
-  <img src="https://github.com/roberts1y/lightSwitch/blob/main/pictures/restly.jpg" alt="Mr. Brendan Restly & Robert Snell" width="300"/>
-  <img src="https://github.com/roberts1y/lightSwitch/blob/main/pictures/trophy.JPG" alt="Award With Trophy" width="300"/>
+  <img src="https://github.com/roberts1y/lightSwitch/blob/main/pictures/restly.jpg" alt="Mr. Brendan Restly & Robert Snell" width="300" height="400"/>
+  <img src="https://github.com/roberts1y/lightSwitch/blob/main/pictures/trophy.JPG" alt="Award With Trophy" width="300" height="400"/>
 </p>
   
 ## How It Works
